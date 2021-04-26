@@ -1,6 +1,6 @@
 # Wasm Image Decoder
 
-Decodes images using Rust's `image` crate compiled to WebAssembly. By default it uses 4 threads (e.g. for jpeg decoder) since it doesn't seem to get much faster if I add any more. You can edit `mod.js` to change the number of threads.
+Decodes images using Rust's `image` crate compiled to WebAssembly. By default it uses 4 threads (though some decoders are single-threaded) since it doesn't seem to get much faster if I add any more. You can edit `mod.js` to change the number of threads.
 
 Works in the browser and should work in Deno when [this PR](https://github.com/denoland/deno/pull/10116) lands and 1.10.0 is released (around May 2021).
 
