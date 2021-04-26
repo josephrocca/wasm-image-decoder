@@ -6,6 +6,10 @@ Works in the browser and should work in Deno when [this PR](https://github.com/d
 
 As of writing it's about 3x slower than native Rust. Drawing the image to an `OffscreenCanvas` and then extracting the image data is the same speed as native Rust, so use that if your JS runtime has it available. The communication overhead between JS and the wasm module is negligible, so the slowness is probably due to missing functionality and lack of optimisation in wasm runtimes (e.g. thread/simd/etc. optimisations), so the performance should improve with time.
 
+## File Formats Supported
+
+It supports decoding PNG, JPEG, WEBP, GIF, BMP, ICO, TGA, and several others, but some formats don't have full support as of writing (April 2021). [See here](https://github.com/image-rs/image/blob/2a79d33e663d27e402c76bfc6aa5ca78b1cc9895/README.md#supported-image-formats) for the support table. Check the [latest image-rs readme](https://github.com/image-rs/image) to see if there is increased support, and if so you can follow the build instructions below to build a version of this library that supports the new formats.
+
 ## Demo
 
 ```js
@@ -17,6 +21,6 @@ console.log(result); // {width, height, data} where data is a Uint8Array array o
 
 ## Build
 ```
+git clone https://github.com/josephrocca/wasm-image-decoder
 wasm-pack build --target=web --out-dir=wasm
-# For now a manual change needs to be made to workerHelper.no-bundler.js as described here: https://github.com/GoogleChromeLabs/wasm-bindgen-rayon/issues/6#issue-867938231
 ```
