@@ -7,7 +7,7 @@ Works in the browser and should work in Deno when [this PR](https://github.com/d
 ## Demo
 
 ```js
-import decode from "https://deno.land/x/wasm-image-decoder@v0.0.1/mod.js";
+import decode from "https://deno.land/x/wasm-image-decoder@v0.0.3/mod.js";
 let buf = await fetch("https://i.imgur.com/LYVUrUf.jpg").then(r => r.arrayBuffer());
 let result = decode(buf); 
 console.log(result); // {width, height, data} where data is a Uint8Array array of RGBA values like [R,G,B,A,R,G,B,A,R,G,B,A,...]
