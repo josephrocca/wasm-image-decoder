@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>wasm image decoder</title>
+  </head>
+  <body>
+    <script type="module">
+      import decode from "./mod.js";
+      if(true) {
+        console.log("wasm image decoder:");
+        // let buf = await fetch("https://i.imgur.com/uz9efia.png").then(r => r.arrayBuffer()); // tiny png
+        // let buf = await fetch("https://i.imgur.com/ys5iqwb.jpg").then(r => r.arrayBuffer()); // tiny jpg
+        let buf = await fetch("https://i.imgur.com/LYVUrUf.jpg", {referrer:""}).then(r => r.arrayBuffer()); // huge jpg
+        
+        let t1 = performance.now();
+
+        let imageData = decode(buf);
+        console.log(imageData);
+
+        console.log(performance.now()-t1);
+      }
+
+      if(true) {
+        console.log("offscreen canvas:");
+        let canvas = new OffscreenCanvas(1,1);
+        let ctx = canvas.getContext("2d");
+        let img = await new Promise(async (resolve) => {
+          let objUrl = await fetch("https://i.imgur.com/LYVUrUf.jpg", {referrer:""}).then(r => r.blob()).then(b => URL.createObjectURL(b));
+          let img = new Image();
+          img.onload = () => resolve(img);
+          img.src = objUrl;
+        });
+        let t1 = performance.now();
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.drawImage(img, 0, 0);
+        console.log(ctx.getImageData(0, 0, canvas.width, canvas.height));
+        console.log(performance.now()-t1);
+      }
+
+      // if(true) {
+      //   let Canvas = await import('https://deno.land/x/canvas@v1.1.1/mod.ts');
+      //   const canvas = Canvas.MakeCanvas(1, 1);
+      //   const ctx = canvas.getContext('2d');
+      //   const image = await loadImage("https://i.imgur.com/LYVUrUf.jpg");
+      //   let t1 = performance.now();
+      //   canvas.width = image.width;
+      //   canvas.height = image.height;
+      //   ctx.drawImage(image, x, y);
+      //   console.log(ctx.getImageData(0, 0, canvas.width, canvas.height));
+      //   console.log(performance.now()-t1);
+      // }
+      </script>
+  </body>
+</html>

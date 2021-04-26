@@ -1,0 +1,12 @@
+{
+  "name": "wasm-image-decoder",
+  "version": "0.0.1",
+  "files": [
+    "wasm_image_decoder_bg.wasm",
+    "wasm_image_decoder.js",
+    "wasm_image_decoder.d.ts"
+  ],
+  "module": "wasm_image_decoder.js",
+  "types": "wasm_image_decoder.d.ts",
+  "sideEffects": false
+}
