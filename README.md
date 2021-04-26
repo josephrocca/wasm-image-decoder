@@ -16,4 +16,5 @@ console.log(result); // {width, height, data} where data is a Uint8Array array o
 ## Build
 ```
 wasm-pack build --target=web --out-dir=wasm
+# For now a manual change needs to be made to workerHelper.no-bundler.js as described here: https://github.com/GoogleChromeLabs/wasm-bindgen-rayon/issues/6#issue-867938231
 ```
