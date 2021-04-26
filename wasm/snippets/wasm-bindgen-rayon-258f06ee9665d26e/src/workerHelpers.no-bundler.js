@@ -52,7 +52,8 @@ export async function startWorkers(module, memory, builder) {
   _workers = await Promise.all(
     Array.from({ length: builder.numThreads() }, async () => {
       // Self-spawn into a new Worker.
-      const worker = new Worker(import.meta.url, {
+      let scriptBlob = await fetch(import.meta.url).then(r => r.blob());
+      const worker = new Worker(URL.createObjectURL(scriptBlob), {
         type: 'module'
       });
       worker.postMessage(workerInit);
