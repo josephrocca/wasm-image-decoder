@@ -22,6 +22,8 @@ console.log(result); // {width, height, data} where data is a Uint8Array array o
 ## Build
 ```
 git clone https://github.com/josephrocca/wasm-image-decoder
+cd wasm-image-decoder
+cargo install wasm-pack
 wasm-pack build --target=web --out-dir=wasm
 ```
 Basic `wasm-pack` tutorial here: https://developer.mozilla.org/en-US/docs/WebAssembly/Rust_to_wasm
