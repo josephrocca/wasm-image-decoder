@@ -53,11 +53,13 @@ export async function startWorkers(module, memory, builder) {
     Array.from({ length: builder.numThreads() }, async () => {
       // Self-spawn into a new Worker.
       let scriptBlob = await fetch(import.meta.url).then(r => r.blob());
-      const worker = new Worker(URL.createObjectURL(scriptBlob), {
+      let url = URL.createObjectURL(scriptBlob);
+      const worker = new Worker(url, {
         type: 'module'
       });
       worker.postMessage(workerInit);
       await waitForMsgType(worker, 'wasm_bindgen_worker_ready');
+      URL.revokeObjectURL(url);
       return worker;
     })
   );
