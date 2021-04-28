@@ -14,7 +14,7 @@ It supports decoding PNG, JPEG, WEBP, GIF, BMP, ICO, TGA, and several others, bu
 
 ```js
 import decode from "https://deno.land/x/wasm_image_decoder@v0.0.4/mod.js";
-let buf = await fetch("https://i.imgur.com/LYVUrUf.jpg").then(r => r.arrayBuffer());
+let buf = await fetch("https://i.imgur.com/LYVUrUf.jpg", {referrer:""}).then(r => r.arrayBuffer()); // empty referrer header because imgur blocks requests from 127.0.0.1
 let result = decode(buf); 
 console.log(result); // {width, height, data} where data is a Uint8Array array of RGBA values like [R,G,B,A,R,G,B,A,R,G,B,A,...]
 ```
