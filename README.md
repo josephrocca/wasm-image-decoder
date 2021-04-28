@@ -4,6 +4,8 @@ Decodes images using Rust's `image` crate compiled to WebAssembly. By default it
 
 Works in the browser and should work in Deno when [this PR](https://github.com/denoland/deno/pull/10116) lands and 1.10.0 is released (around May 2021).
 
+**Note**: This can only be used within a webworker due to wasm not supporting blocking/waiting operations when executed in the main thread ([related comment](https://github.com/GoogleChromeLabs/wasm-bindgen-rayon/pull/7#issuecomment-828569860)).
+
 As of writing it's about 3x slower than native Rust. Drawing the image to an `OffscreenCanvas` and then extracting the image data is the same speed as native Rust, so use that if your JS runtime has it available. The communication overhead between JS and the wasm module is negligible, so the slowness is probably due to missing functionality and lack of optimisation in wasm runtimes (e.g. thread/simd/etc. optimisations), so the performance should improve with time.
 
 ## File Formats Supported
