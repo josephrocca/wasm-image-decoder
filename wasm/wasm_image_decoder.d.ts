@@ -46,7 +46,7 @@ export interface InitOutput {
   readonly wbg_rayon_poolbuilder_build: (a: number) => void;
   readonly initThreadPool: (a: number) => number;
   readonly wbg_rayon_start_worker: (a: number) => void;
-  readonly __wbindgen_export_0: WebAssembly.Memory;
+  readonly memory: WebAssembly.Memory;
   readonly __wbindgen_add_to_stack_pointer: (a: number) => number;
   readonly __wbindgen_malloc: (a: number) => number;
   readonly __wbindgen_free: (a: number, b: number) => void;

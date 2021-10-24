@@ -29,3 +29,8 @@ cargo install wasm-pack
 wasm-pack build --target=web --out-dir=wasm
 ```
 Basic `wasm-pack` tutorial here: https://developer.mozilla.org/en-US/docs/WebAssembly/Rust_to_wasm
+
+If it fails with "unable to build with the standard library", you'll need to run
+```
+rustup component add rust-src
+```

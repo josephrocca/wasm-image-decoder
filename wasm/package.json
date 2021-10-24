@@ -1,6 +1,6 @@
 {
   "name": "wasm-image-decoder",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "files": [
     "wasm_image_decoder_bg.wasm",
     "wasm_image_decoder.js",
