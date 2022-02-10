@@ -52,6 +52,9 @@ export async function startWorkers(module, memory, builder) {
   _workers = await Promise.all(
     Array.from({ length: builder.numThreads() }, async () => {
       // Self-spawn into a new Worker.
+      // The script is fetched as a blob so it works even if this script is
+      // hosted remotely (e.g. on a CDN). This avoids a cross-origin
+      // security error.
       let scriptBlob = await fetch(import.meta.url).then(r => r.blob());
       let url = URL.createObjectURL(scriptBlob);
       const worker = new Worker(url, {

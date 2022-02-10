@@ -8,7 +8,7 @@ export function wbg_rayon_poolbuilder_receiver(a: number): number;
 export function wbg_rayon_poolbuilder_build(a: number): void;
 export function initThreadPool(a: number): number;
 export function wbg_rayon_start_worker(a: number): void;
-export const __wbindgen_export_0: WebAssembly.Memory;
+export const memory: WebAssembly.Memory;
 export function __wbindgen_add_to_stack_pointer(a: number): number;
 export function __wbindgen_malloc(a: number): number;
 export function __wbindgen_free(a: number, b: number): void;
