@@ -10,7 +10,7 @@ As of writing it's about 3x slower than native Rust. Drawing the image to an `Of
 
 ## File Formats Supported
 
-It supports decoding PNG, JPEG, WEBP, GIF, BMP, ICO, TGA, and several others, but some formats don't have full support as of writing (Feb 2022). [See here](https://github.com/image-rs/image/tree/v0.24.0#supported-image-formats) for the support table. Check the [latest image-rs readme](https://github.com/image-rs/image) to see if there is increased support, and if so you can follow the build instructions below to build a version of this library that supports the new formats.
+It supports decoding PNG, JPEG, WEBP, GIF, BMP, ICO, TGA, and several others, but some formats don't have full support as of writing (Feb 2022). [See here](https://github.com/image-rs/image/tree/v0.24.5#supported-image-formats) for the support table. Check the [latest image-rs readme](https://github.com/image-rs/image) to see if there is increased support, and if so you can follow the build instructions below to build a version of this library that supports the new formats.
 
 ## Demo
 
